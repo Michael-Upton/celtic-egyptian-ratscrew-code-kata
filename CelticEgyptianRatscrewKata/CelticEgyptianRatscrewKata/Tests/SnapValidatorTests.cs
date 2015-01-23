@@ -20,11 +20,10 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             get
             {
-                return new[] {
-                    TestStack("Standard Snap",
-                            Rank.Eight.Of(Suit.Clubs),
-                            Rank.Eight.Of(Suit.Spades)
-                       )}.Select(tc => tc.Returns(true));
+                yield return ShouldSnap("Standard Snap",
+                                        Rank.Eight.Of(Suit.Clubs),
+                                        Rank.Eight.Of(Suit.Spades));
+
             }
         }
 
@@ -32,11 +31,20 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             get
             {
-                return new[] {
-                    TestStack("Single Card",
-                            Rank.Seven.Of(Suit.Clubs)
-                       )}.Select(tc => tc.Returns(false));
+                yield return ShouldNotSnap("No cards");
+                yield return ShouldNotSnap("Single Card",
+                                           Rank.Seven.Of(Suit.Clubs));
             }
+        }
+
+        private static TestCaseData ShouldSnap(string testName, params Card[] cards)
+        {
+            return TestStack(testName, cards).Returns(true);
+        }
+
+        private static TestCaseData ShouldNotSnap(string testName, params Card[] cards)
+        {
+            return TestStack(testName, cards).Returns(false);
         }
 
         private static TestCaseData TestStack(string testName, params Card[] cards)
