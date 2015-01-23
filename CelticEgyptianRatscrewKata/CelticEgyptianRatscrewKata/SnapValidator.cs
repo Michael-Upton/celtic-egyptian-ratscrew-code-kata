@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CelticEgyptianRatscrewKata
 {
@@ -9,14 +10,16 @@ namespace CelticEgyptianRatscrewKata
 
     public class SnapValidator : ISnapValidator
     {
-        public bool CanSnap(Stack cards)
+        private readonly ICollection<ISnapValidator> _snappers;
+
+        public SnapValidator()
         {
-            return cards.Zip(cards.Skip(1), HaveSameRank).Any(b => b);
+            _snappers = new[] {new NSandwichSnapper(0), new NSandwichSnapper(1)};
         }
 
-        private bool HaveSameRank(Card firstCard, Card secondCard)
+        public bool CanSnap(Stack cards)
         {
-            return firstCard.Rank == secondCard.Rank;
+            return _snappers.Any(snapper => snapper.CanSnap(cards));
         }
     }
 }

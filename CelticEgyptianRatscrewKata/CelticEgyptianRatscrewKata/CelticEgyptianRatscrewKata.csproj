@@ -48,6 +48,7 @@
     <Compile Include="Rank.cs" />
     <Compile Include="SnapValidator.cs" />
     <Compile Include="Stack.cs" />
+    <Compile Include="NSandwichSnapper.cs" />
     <Compile Include="Tests\SnapValidatorTests.cs" />
     <Compile Include="Tests\StackTests.cs" />
     <Compile Include="Suit.cs" />
