@@ -7,6 +7,7 @@ namespace CelticEgyptianRatscrewKata.Tests
     public class SnapValidatorTests
     {
         [TestCaseSource("StandardSnaps")]
+        [TestCaseSource("SandwichSnaps")]
         [TestCaseSource("StacksWithoutSnaps")]
         public bool SnapValidator(Stack cards)
         {
@@ -31,6 +32,37 @@ namespace CelticEgyptianRatscrewKata.Tests
 
                 yield return ShouldSnap(Rank.Queen.Of(Suit.Diamonds),
                                         Rank.Ace.Of(Suit.Spades),
+                                        Rank.Ace.Of(Suit.Hearts));
+            }
+        }
+
+        private IEnumerable<TestCaseData> SandwichSnaps
+        {
+            get
+            {
+                yield return ShouldSnap(Rank.Eight.Of(Suit.Clubs),
+                                        Rank.Five.Of(Suit.Clubs),
+                                        Rank.Eight.Of(Suit.Spades));
+
+                yield return ShouldSnap(Rank.Eight.Of(Suit.Clubs),
+                                        Rank.Eight.Of(Suit.Hearts),
+                                        Rank.Eight.Of(Suit.Spades));
+
+
+                yield return ShouldSnap(Rank.Eight.Of(Suit.Diamonds),
+                                        Rank.Five.Of(Suit.Spades),
+                                        Rank.Four.Of(Suit.Clubs),
+                                        Rank.Five.Of(Suit.Hearts),
+                                        Rank.Four.Of(Suit.Diamonds));
+
+                yield return ShouldSnap(Rank.Ace.Of(Suit.Spades),
+                                        Rank.Four.Of(Suit.Clubs),
+                                        Rank.Ace.Of(Suit.Hearts),
+                                        Rank.Queen.Of(Suit.Diamonds));
+
+                yield return ShouldSnap(Rank.Queen.Of(Suit.Diamonds),
+                                        Rank.Ace.Of(Suit.Spades),
+                                        Rank.Four.Of(Suit.Clubs),
                                         Rank.Ace.Of(Suit.Hearts));
             }
         }
