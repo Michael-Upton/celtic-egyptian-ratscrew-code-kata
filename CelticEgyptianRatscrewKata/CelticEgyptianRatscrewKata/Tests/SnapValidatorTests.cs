@@ -104,6 +104,8 @@ namespace CelticEgyptianRatscrewKata.Tests
                                            Rank.Ace.Of(Suit.Spades),
                                            Rank.Queen.Of(Suit.Spades),
                                            Rank.Seven.Of(Suit.Hearts));
+
+                yield return ShouldNotSnap(Rank.Seven.Of(Suit.Clubs), Rank.Queen.Of(Suit.Clubs));
             }
         }
 
