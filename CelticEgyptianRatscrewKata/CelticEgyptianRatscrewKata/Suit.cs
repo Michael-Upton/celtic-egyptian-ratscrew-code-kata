@@ -6,6 +6,5 @@
         Diamonds,
         Hearts,
         Spades
-
     }
 }
