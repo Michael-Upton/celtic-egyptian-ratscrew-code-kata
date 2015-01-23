@@ -8,9 +8,11 @@ namespace CelticEgyptianRatscrewKata
     {
         private readonly List<Card> _cards;
 
+        public Stack(params Card[] cards) : this((IEnumerable<Card>)cards) { }
+
         public Stack(IEnumerable<Card> cards)
         {
-            _cards = new List<Card>(cards);
+            _cards = cards.ToList();
         }
 
         public IEnumerator<Card> GetEnumerator()

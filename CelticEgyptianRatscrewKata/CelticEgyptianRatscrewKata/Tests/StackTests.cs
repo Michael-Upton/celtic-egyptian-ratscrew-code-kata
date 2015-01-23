@@ -8,10 +8,19 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void ShouldReadTopCardOnStack()
         {
-            var expectedCard = new Card(Suit.Clubs, Rank.Ace);
-            var stack = new Stack(new List<Card> {expectedCard});
+            var expectedCard = Rank.Ace.Of(Suit.Spades);
 
-            CollectionAssert.AreEqual(stack, new List<Card> {expectedCard});
+            var stack = new Stack(Rank.Nine.Of(Suit.Hearts),
+                                  expectedCard);
+
+            Assert.That(stack.TopCard, Is.EqualTo((Maybe<Card>)expectedCard));
+        }
+
+        [Test]
+        public void TopCardOfEmptyStackShouldBeNothing()
+        {
+            var stack = new Stack();
+            Assert.That(stack.TopCard, Is.EqualTo(Maybe<Card>.Nothing));
         }
 
         [Test]
