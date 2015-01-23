@@ -23,6 +23,11 @@ namespace CelticEgyptianRatscrewKata
             return GetEnumerator();
         }
 
+        public Maybe<Card> TopCard
+        {
+            get { return _cards.LastOrDefault() ?? Maybe<Card>.Nothing;}
+        }
+
         public override string ToString()
         {
             return string.Format("Stack [{0}]",

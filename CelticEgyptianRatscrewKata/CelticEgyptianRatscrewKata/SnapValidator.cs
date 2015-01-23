@@ -14,7 +14,12 @@ namespace CelticEgyptianRatscrewKata
 
         public SnapValidator()
         {
-            _snappers = new[] {new NSandwichSnapper(0), new NSandwichSnapper(1)};
+            _snappers = new ISnapValidator[]
+                        {
+                            new NSandwichSnapper(0),
+                            new NSandwichSnapper(1),
+                            new DarkQueenSnapper()
+                        };
         }
 
         public bool CanSnap(Stack cards)
