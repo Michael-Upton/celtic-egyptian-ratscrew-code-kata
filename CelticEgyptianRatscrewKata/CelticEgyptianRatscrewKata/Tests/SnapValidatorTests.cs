@@ -1,7 +1,4 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace CelticEgyptianRatscrewKata.Tests
@@ -20,9 +17,13 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             get
             {
-                yield return ShouldSnap("Standard Snap",
-                                        Rank.Eight.Of(Suit.Clubs),
+                yield return ShouldSnap(Rank.Eight.Of(Suit.Clubs),
                                         Rank.Eight.Of(Suit.Spades));
+
+                yield return ShouldSnap(Rank.Eight.Of(Suit.Diamonds),
+                                        Rank.Five.Of(Suit.Spades),
+                                        Rank.Five.Of(Suit.Hearts),
+                                        Rank.Four.Of(Suit.Diamonds));
 
             }
         }
@@ -31,25 +32,31 @@ namespace CelticEgyptianRatscrewKata.Tests
         {
             get
             {
-                yield return ShouldNotSnap("No cards");
-                yield return ShouldNotSnap("Single Card",
-                                           Rank.Seven.Of(Suit.Clubs));
+                yield return ShouldNotSnap();
+
+                yield return ShouldNotSnap(Rank.Seven.Of(Suit.Clubs));
+
+                yield return ShouldNotSnap(Rank.Seven.Of(Suit.Clubs),
+                                           Rank.Eight.Of(Suit.Clubs),
+                                           Rank.Ace.Of(Suit.Spades),
+                                           Rank.Seven.Of(Suit.Hearts));
             }
         }
 
-        private static TestCaseData ShouldSnap(string testName, params Card[] cards)
+        private static TestCaseData ShouldSnap(params Card[] cards)
         {
-            return TestStack(testName, cards).Returns(true);
+            return TestStack(cards, " should snap").Returns(true);
         }
 
-        private static TestCaseData ShouldNotSnap(string testName, params Card[] cards)
+        private static TestCaseData ShouldNotSnap(params Card[] cards)
         {
-            return TestStack(testName, cards).Returns(false);
+            return TestStack(cards, " should not snap").Returns(false);
         }
 
-        private static TestCaseData TestStack(string testName, params Card[] cards)
+        private static TestCaseData TestStack(IEnumerable<Card> cards, string testName)
         {
-            return new TestCaseData(new Stack(cards)).SetName(testName);
+            var stack = new Stack(cards);
+            return new TestCaseData(stack).SetName(stack + testName);
         }
     }
 }

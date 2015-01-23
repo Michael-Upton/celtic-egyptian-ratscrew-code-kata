@@ -8,15 +8,9 @@ namespace CelticEgyptianRatscrewKata
     {
         private readonly List<Card> m_Cards;
 
-        public Stack() : this(Enumerable.Empty<Card>()) { } 
         public Stack(IEnumerable<Card> cards)
         {
             m_Cards = new List<Card>(cards);
-        }
-
-        public void Add(Card c)
-        {
-            m_Cards.Add(c);
         }
 
         public IEnumerator<Card> GetEnumerator()
@@ -27,6 +21,12 @@ namespace CelticEgyptianRatscrewKata
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Stack [{0}]",
+                                 string.Join(", ", this.Select(card => string.Format("{0} of {1}", card.Rank, card.Suit))));
         }
     }
 }
