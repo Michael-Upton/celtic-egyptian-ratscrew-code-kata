@@ -1,4 +1,6 @@
-﻿namespace CelticEgyptianRatscrewKata
+﻿using System.Linq;
+
+namespace CelticEgyptianRatscrewKata
 {
     public interface ISnapValidator
     {
@@ -9,7 +11,12 @@
     {
         public bool CanSnap(Stack cards)
         {
-            throw new System.NotImplementedException();
+            return cards.Zip(cards.Skip(1), HaveSameRank).Any();
+        }
+
+        private bool HaveSameRank(Card firstCard, Card secondCard)
+        {
+            return firstCard.Rank == secondCard.Rank;
         }
     }
 }
