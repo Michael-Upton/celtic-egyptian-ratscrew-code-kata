@@ -6,14 +6,14 @@ namespace CelticEgyptianRatscrewKata.Tests
     [TestFixture]
     public class SnapValidatorTests
     {
-        [TestCaseSource("StacksWithSnaps")]
+        [TestCaseSource("StandardSnaps")]
         [TestCaseSource("StacksWithoutSnaps")]
         public bool SnapValidator(Stack cards)
         {
             return new SnapValidator().CanSnap(cards);
         }
 
-        private IEnumerable<TestCaseData> StacksWithSnaps
+        private IEnumerable<TestCaseData> StandardSnaps
         {
             get
             {
@@ -25,6 +25,13 @@ namespace CelticEgyptianRatscrewKata.Tests
                                         Rank.Five.Of(Suit.Hearts),
                                         Rank.Four.Of(Suit.Diamonds));
 
+                yield return ShouldSnap(Rank.Ace.Of(Suit.Spades),
+                                        Rank.Ace.Of(Suit.Hearts),
+                                        Rank.Queen.Of(Suit.Diamonds));
+
+                yield return ShouldSnap(Rank.Queen.Of(Suit.Diamonds),
+                                        Rank.Ace.Of(Suit.Spades),
+                                        Rank.Ace.Of(Suit.Hearts));
             }
         }
 
