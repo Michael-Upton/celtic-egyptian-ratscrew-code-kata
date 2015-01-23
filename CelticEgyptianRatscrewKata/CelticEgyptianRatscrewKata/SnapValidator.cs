@@ -11,7 +11,7 @@ namespace CelticEgyptianRatscrewKata
     {
         public bool CanSnap(Stack cards)
         {
-            return cards.Zip(cards.Skip(1), HaveSameRank).Any();
+            return cards.Zip(cards.Skip(1), HaveSameRank).Any(b => b);
         }
 
         private bool HaveSameRank(Card firstCard, Card secondCard)
