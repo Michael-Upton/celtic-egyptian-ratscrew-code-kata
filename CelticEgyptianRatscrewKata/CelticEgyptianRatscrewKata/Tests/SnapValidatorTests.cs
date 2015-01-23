@@ -8,6 +8,7 @@ namespace CelticEgyptianRatscrewKata.Tests
     {
         [TestCaseSource("StandardSnaps")]
         [TestCaseSource("SandwichSnaps")]
+        [TestCaseSource("DarkQueenSnaps")]
         [TestCaseSource("StacksWithoutSnaps")]
         public bool SnapValidator(Stack cards)
         {
@@ -35,7 +36,22 @@ namespace CelticEgyptianRatscrewKata.Tests
                                         Rank.Ace.Of(Suit.Hearts));
             }
         }
+        private IEnumerable<TestCaseData> DarkQueenSnaps
+        {
+            get
+            {
+                yield return ShouldSnap(Rank.Queen.Of(Suit.Spades));
 
+                yield return ShouldSnap(Rank.Seven.Of(Suit.Clubs), Rank.Queen.Of(Suit.Spades));
+
+                yield return ShouldSnap(Rank.Seven.Of(Suit.Clubs),
+                                           Rank.Eight.Of(Suit.Clubs),
+                                           Rank.Ace.Of(Suit.Spades),
+                                           Rank.Seven.Of(Suit.Hearts),
+                                           Rank.Queen.Of(Suit.Spades));
+            }
+        }
+        
         private IEnumerable<TestCaseData> SandwichSnaps
         {
             get
@@ -75,9 +91,18 @@ namespace CelticEgyptianRatscrewKata.Tests
 
                 yield return ShouldNotSnap(Rank.Seven.Of(Suit.Clubs));
 
+                yield return ShouldNotSnap(Rank.Queen.Of(Suit.Spades),
+                                           Rank.Seven.Of(Suit.Clubs));
+
                 yield return ShouldNotSnap(Rank.Seven.Of(Suit.Clubs),
                                            Rank.Eight.Of(Suit.Clubs),
                                            Rank.Ace.Of(Suit.Spades),
+                                           Rank.Seven.Of(Suit.Hearts));
+
+                yield return ShouldNotSnap(Rank.Seven.Of(Suit.Clubs),
+                                           Rank.Eight.Of(Suit.Clubs),
+                                           Rank.Ace.Of(Suit.Spades),
+                                           Rank.Queen.Of(Suit.Spades),
                                            Rank.Seven.Of(Suit.Hearts));
             }
         }
