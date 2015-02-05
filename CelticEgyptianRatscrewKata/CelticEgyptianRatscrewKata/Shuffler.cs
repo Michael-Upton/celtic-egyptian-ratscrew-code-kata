@@ -1,35 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CelticEgyptianRatscrewKata
 {
-    public class Shuffler
+    public class Shuffler : IShuffler
     {
-        private readonly IRandomNumberGenerator m_RandomNumberGenerator;
-
-        public Shuffler() : this(new RandomNumberGenerator())
+        public Cards Shuffle(IEnumerable<Card> deck)
         {
-        }
-
-        public Shuffler(IRandomNumberGenerator randomNumberGenerator)
-        {
-            m_RandomNumberGenerator = randomNumberGenerator;
-        }
-
-        public Cards Shuffle(Cards deck)
-        {
-            var shuffledDeck = Cards.Empty();
-
-            var unshuffledDeck = new Cards(deck);
-            while (unshuffledDeck.HasCards)
-            {
-                var randomInt = m_RandomNumberGenerator.Get(0, unshuffledDeck.Count());
-                var nextCard = unshuffledDeck.CardAt(randomInt);
-                unshuffledDeck.RemoveCardAt(randomInt);
-                shuffledDeck.AddToTop(nextCard);
-            }
-
-            return shuffledDeck;
+            var random = new Random();
+            return new Cards(deck.OrderBy(c => random.Next()));
         }
     }
 }

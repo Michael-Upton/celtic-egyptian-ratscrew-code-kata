@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -57,11 +58,6 @@ namespace CelticEgyptianRatscrewKata
             return GetEnumerator();
         }
 
-        public static Cards Empty()
-        {
-            return new Cards();
-        }
-
         public Maybe<Card> TopCard
         {
             get { return HasCards ? CardAt(IndexOfTop) : Maybe<Card>.Nothing; }
@@ -71,6 +67,18 @@ namespace CelticEgyptianRatscrewKata
         {
             return string.Format("[{0}]",
                                  string.Join(", ", this.Select(card => string.Format("{0} of {1}", card.Rank, card.Suit))));
+        }
+
+        public static Cards Empty()
+        {
+            return new Cards();
+        }
+
+        public static Cards Deck()
+        {
+            return new Cards(from Suit suit in Enum.GetValues(typeof (Suit))
+                             from Rank rank in Enum.GetValues(typeof (Rank))
+                             select rank.Of(suit));
         }
     }
 }

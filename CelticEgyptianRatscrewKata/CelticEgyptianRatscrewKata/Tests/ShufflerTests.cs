@@ -20,44 +20,24 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void ShufflingDeckWithOneCardReturnsDeckWithOneCard()
         {
-            var deck = new Cards(AceOfClubs());
+            var aceOfClubs = Rank.Ace.Of(Suit.Clubs);
+            var deck = new Cards(aceOfClubs);
             var shuffler = new Shuffler();
 
             var shuffledDeck = shuffler.Shuffle(deck);
 
-            var expectedDeck = new Cards(AceOfClubs());
+            var expectedDeck = new Cards(aceOfClubs);
             Assert.That(shuffledDeck, Is.EqualTo(expectedDeck));
         }
 
         [Test]
-        public void ShufflingDeckWithThreeCardsReturnsDeckWithTheCardsInADifferentOrder()
+        public void ShufflingAFullDeckReturnsTheSameCards()
         {
-            var deck = new Cards(AceOfClubs(), TwoOfClubs(), ThreeOfClubs());
-            var randomNumberGeneratorMock = new Mock<IRandomNumberGenerator>();
-            randomNumberGeneratorMock.Setup(x => x.Get(0, 3)).Returns(1);
-            randomNumberGeneratorMock.Setup(x => x.Get(0, 2)).Returns(1);
-            randomNumberGeneratorMock.Setup(x => x.Get(0, 1)).Returns(0);
-            var shuffler = new Shuffler(randomNumberGeneratorMock.Object);
+            var shuffler = new Shuffler();
 
-            var shuffledDeck = shuffler.Shuffle(deck);
+            var shuffledDeck = shuffler.Shuffle(Cards.Deck());
 
-            var expectedDeck = new Cards(TwoOfClubs(), ThreeOfClubs(), AceOfClubs());
-            Assert.That(shuffledDeck, Is.EqualTo(expectedDeck));
-        }
-
-        private static Card AceOfClubs()
-        {
-            return new Card(Suit.Clubs, Rank.Ace);
-        }
-
-        private static Card TwoOfClubs()
-        {
-            return new Card(Suit.Clubs, Rank.Two);
-        }
-
-        private static Card ThreeOfClubs()
-        {
-            return new Card(Suit.Clubs, Rank.Three);
+            Assert.That(shuffledDeck, Is.EquivalentTo(Cards.Deck()));
         }
     }
 }
