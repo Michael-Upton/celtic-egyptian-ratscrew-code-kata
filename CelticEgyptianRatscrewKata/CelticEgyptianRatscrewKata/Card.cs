@@ -1,4 +1,6 @@
-﻿namespace CelticEgyptianRatscrewKata
+﻿using System;
+
+namespace CelticEgyptianRatscrewKata
 {
     public class Card
     {
@@ -7,6 +9,8 @@
 
         public Card(Suit suit, Rank rank)
         {
+            if (!Enum.IsDefined(typeof(Suit), suit)) throw new ArgumentOutOfRangeException("suit");
+            if (!Enum.IsDefined(typeof(Rank), rank)) throw new ArgumentOutOfRangeException("rank");
             Suit = suit;
             Rank = rank;
         }

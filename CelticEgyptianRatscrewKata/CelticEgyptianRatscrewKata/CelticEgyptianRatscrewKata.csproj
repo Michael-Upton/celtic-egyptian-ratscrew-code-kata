@@ -57,6 +57,7 @@
     <Compile Include="SnapRules\NSandwichSnapper.cs" />
     <Compile Include="SnapRules\SnapValidator.cs" />
     <Compile Include="Shuffler.cs" />
+    <Compile Include="Tests\CardsTests.cs" />
     <Compile Include="Tests\DealerTests.cs" />
     <Compile Include="Tests\ShufflerTests.cs" />
     <Compile Include="Tests\SnapValidatorTests.cs" />
