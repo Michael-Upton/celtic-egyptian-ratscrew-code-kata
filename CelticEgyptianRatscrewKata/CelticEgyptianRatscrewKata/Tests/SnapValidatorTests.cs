@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using CelticEgyptianRatscrewKata.SnapRules;
 using NUnit.Framework;
 
 namespace CelticEgyptianRatscrewKata.Tests

@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="CardExtensions.cs" />
-    <Compile Include="DarkQueenSnapper.cs" />
     <Compile Include="Maybe.cs" />
     <Compile Include="Cards.cs" />
     <Compile Include="Dealer.cs" />
@@ -55,9 +54,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomNumberGenerator.cs" />
     <Compile Include="Rank.cs" />
-    <Compile Include="SnapValidator.cs" />
+    <Compile Include="SnapRules\DarkQueenSnapper.cs" />
+    <Compile Include="SnapRules\NSandwichSnapper.cs" />
+    <Compile Include="SnapRules\SnapValidator.cs" />
     <Compile Include="Shuffler.cs" />
-    <Compile Include="NSandwichSnapper.cs" />
     <Compile Include="Tests\DealerTests.cs" />
     <Compile Include="Tests\ShufflerTests.cs" />
     <Compile Include="Tests\SnapValidatorTests.cs" />
