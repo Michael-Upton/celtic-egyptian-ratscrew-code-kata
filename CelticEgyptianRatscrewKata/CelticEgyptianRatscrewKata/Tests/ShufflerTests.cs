@@ -20,19 +20,19 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void ShufflingDeckWithOneCardReturnsDeckWithOneCard()
         {
-            var deck = Cards.With(AceOfClubs());
+            var deck = new Cards(AceOfClubs());
             var shuffler = new Shuffler();
 
             var shuffledDeck = shuffler.Shuffle(deck);
 
-            var expectedDeck = Cards.With(AceOfClubs());
+            var expectedDeck = new Cards(AceOfClubs());
             Assert.That(shuffledDeck, Is.EqualTo(expectedDeck));
         }
 
         [Test]
         public void ShufflingDeckWithThreeCardsReturnsDeckWithTheCardsInADifferentOrder()
         {
-            var deck = Cards.With(AceOfClubs(), TwoOfClubs(), ThreeOfClubs());
+            var deck = new Cards(AceOfClubs(), TwoOfClubs(), ThreeOfClubs());
             var randomNumberGeneratorMock = new Mock<IRandomNumberGenerator>();
             randomNumberGeneratorMock.Setup(x => x.Get(0, 3)).Returns(1);
             randomNumberGeneratorMock.Setup(x => x.Get(0, 2)).Returns(1);
@@ -41,7 +41,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 
             var shuffledDeck = shuffler.Shuffle(deck);
 
-            var expectedDeck = Cards.With(TwoOfClubs(), ThreeOfClubs(), AceOfClubs());
+            var expectedDeck = new Cards(TwoOfClubs(), ThreeOfClubs(), AceOfClubs());
             Assert.That(shuffledDeck, Is.EqualTo(expectedDeck));
         }
 

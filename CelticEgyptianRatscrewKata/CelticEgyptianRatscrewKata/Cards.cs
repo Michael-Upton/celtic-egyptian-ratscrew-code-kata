@@ -8,6 +8,8 @@ namespace CelticEgyptianRatscrewKata
     {
         private readonly List<Card> m_Cards;
 
+        public Cards(params Card[] cards) : this((IEnumerable<Card>)cards) { }
+
         public Cards(IEnumerable<Card> cards)
         {
             m_Cards = new List<Card>(cards);
@@ -20,9 +22,14 @@ namespace CelticEgyptianRatscrewKata
 
         public Card Pop()
         {
-            var first = m_Cards.First();
-            m_Cards.RemoveAt(0);
-            return first;
+            var top = CardAt(IndexOfTop);
+            RemoveCardAt(IndexOfTop);
+            return top;
+        }
+
+        private int IndexOfTop
+        {
+            get { return m_Cards.Count - 1; }
         }
 
         public Card CardAt(int i)
@@ -52,30 +59,18 @@ namespace CelticEgyptianRatscrewKata
 
         public static Cards Empty()
         {
-            return With();
+            return new Cards();
         }
 
-        public static Cards With(Cards cards)
+        public Maybe<Card> TopCard
         {
-            return With(cards.ToArray());
-        }
-
-        public static Cards With(params Card[] cards)
-        {
-            return new Cards(cards);
+            get { return HasCards ? CardAt(IndexOfTop) : Maybe<Card>.Nothing; }
         }
 
         public override string ToString()
         {
-            var output = "";
-
-            foreach (var card in m_Cards)
-            {
-                if (!output.Equals("")) output += ", ";
-                output += card;
-            }
-
-            return output;
+            return string.Format("[{0}]",
+                                 string.Join(", ", this.Select(card => string.Format("{0} of {1}", card.Rank, card.Suit))));
         }
     }
 }

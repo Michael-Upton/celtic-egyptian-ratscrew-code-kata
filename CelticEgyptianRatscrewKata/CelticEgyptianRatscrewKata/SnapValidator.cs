@@ -5,7 +5,7 @@ namespace CelticEgyptianRatscrewKata
 {
     public interface ISnapValidator
     {
-        bool CanSnap(Stack cards);
+        bool CanSnap(Cards cards);
     }
 
     public class SnapValidator : ISnapValidator
@@ -22,7 +22,7 @@ namespace CelticEgyptianRatscrewKata
                         };
         }
 
-        public bool CanSnap(Stack cards)
+        public bool CanSnap(Cards cards)
         {
             return _snappers.Any(snapper => snapper.CanSnap(cards));
         }

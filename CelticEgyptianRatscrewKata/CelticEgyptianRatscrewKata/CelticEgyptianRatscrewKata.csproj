@@ -57,22 +57,11 @@
     <Compile Include="Rank.cs" />
     <Compile Include="SnapValidator.cs" />
     <Compile Include="Shuffler.cs" />
-    <Compile Include="Stack.cs" />
-    <Compile Include="SnapRules\DarkQueenSnapRule.cs" />
     <Compile Include="NSandwichSnapper.cs" />
-    <Compile Include="Tests\SnapValidatorTests.cs" />
-    <Compile Include="SnapRules\IRule.cs" />
-    <Compile Include="SnapRules\SnapValidator.cs" />
-    <Compile Include="Tests\StackTests.cs" />
-    <Compile Include="SnapRules\StandardSnapRule.cs" />
-    <Compile Include="Tests\DarkQueenSnapRuleTests.cs" />
-    <Compile Include="SnapRules\SandwichSnapRule.cs" />
     <Compile Include="Tests\DealerTests.cs" />
-    <Compile Include="Tests\SandwichSnapRuleTests.cs" />
     <Compile Include="Tests\ShufflerTests.cs" />
     <Compile Include="Tests\SnapValidatorTests.cs" />
     <Compile Include="Suit.cs" />
-    <Compile Include="Tests\StandardSnapRuleTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

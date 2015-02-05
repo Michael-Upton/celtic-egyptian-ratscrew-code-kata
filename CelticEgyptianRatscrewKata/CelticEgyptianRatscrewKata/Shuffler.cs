@@ -18,18 +18,18 @@ namespace CelticEgyptianRatscrewKata
 
         public Cards Shuffle(Cards deck)
         {
-            var shuffledDeck = new List<Card>();
+            var shuffledDeck = Cards.Empty();
 
-            var unshuffledDeck = Cards.With(deck.ToArray());
+            var unshuffledDeck = new Cards(deck);
             while (unshuffledDeck.HasCards)
             {
                 var randomInt = m_RandomNumberGenerator.Get(0, unshuffledDeck.Count());
                 var nextCard = unshuffledDeck.CardAt(randomInt);
                 unshuffledDeck.RemoveCardAt(randomInt);
-                shuffledDeck.Add(nextCard);
+                shuffledDeck.AddToTop(nextCard);
             }
 
-            return Cards.With(shuffledDeck.ToArray());
+            return shuffledDeck;
         }
     }
 }

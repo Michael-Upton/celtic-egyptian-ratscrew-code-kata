@@ -13,7 +13,7 @@ namespace CelticEgyptianRatscrewKata
             _gap = gap;
         }
 
-        public bool CanSnap(Stack cards)
+        public bool CanSnap(Cards cards)
         {
             return cards.Zip(cards.Skip(_gap + 1), HaveSameRank).Any(b => b);
         }

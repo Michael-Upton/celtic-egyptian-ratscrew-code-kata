@@ -36,28 +36,28 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void DealingOneCardToOnePile()
         {
-            var deck = Cards.With(new Card(Suit.Clubs, Rank.Ace));
+            var deck = new Cards(new Card(Suit.Clubs, Rank.Ace));
             var dealer = new Dealer();
 
             var hands = dealer.Deal(1, deck);
 
-            var expectedHands = new List<Cards> { Cards.With(new Card(Suit.Clubs, Rank.Ace)) };
+            var expectedHands = new List<Cards> { new Cards(new Card(Suit.Clubs, Rank.Ace)) };
             CollectionAssert.AreEqual(expectedHands, hands);
         }
 
         [Test]
         public void DealingThreeCardsToThreePiles()
         {
-            var deck = Cards.With(new Card(Suit.Clubs, Rank.Ace), new Card(Suit.Clubs, Rank.Two), new Card(Suit.Clubs, Rank.Three));
+            var deck = new Cards(new Card(Suit.Clubs, Rank.Three), new Card(Suit.Clubs, Rank.Two), new Card(Suit.Clubs, Rank.Ace));
             var dealer = new Dealer();
 
             var hands = dealer.Deal(3, deck);
 
             var expectedHands = new List<Cards>
                                 {
-                                    Cards.With(new Card(Suit.Clubs, Rank.Ace)),
-                                    Cards.With(new Card(Suit.Clubs, Rank.Two)),
-                                    Cards.With(new Card(Suit.Clubs, Rank.Three))
+                                    new Cards(new Card(Suit.Clubs, Rank.Ace)),
+                                    new Cards(new Card(Suit.Clubs, Rank.Two)),
+                                    new Cards(new Card(Suit.Clubs, Rank.Three))
                                 };
             CollectionAssert.AreEqual(expectedHands, hands);
         }
@@ -65,15 +65,15 @@ namespace CelticEgyptianRatscrewKata.Tests
         [Test]
         public void DealingThreeCardsToTwoPiles()
         {
-            var deck = Cards.With(new Card(Suit.Clubs, Rank.Ace), new Card(Suit.Clubs, Rank.Two), new Card(Suit.Clubs, Rank.Three));
+            var deck = new Cards(new Card(Suit.Clubs, Rank.Three), new Card(Suit.Clubs, Rank.Two), new Card(Suit.Clubs, Rank.Ace));
             var dealer = new Dealer();
 
             var hands = dealer.Deal(2, deck);
 
             var expectedHands = new List<Cards>
                                 {
-                                    Cards.With(new Card(Suit.Clubs, Rank.Ace), new Card(Suit.Clubs, Rank.Three)),
-                                    Cards.With(new Card(Suit.Clubs, Rank.Two))
+                                    new Cards(new Card(Suit.Clubs, Rank.Ace), new Card(Suit.Clubs, Rank.Three)),
+                                    new Cards(new Card(Suit.Clubs, Rank.Two))
                                 };
             CollectionAssert.AreEqual(expectedHands, hands);
         }

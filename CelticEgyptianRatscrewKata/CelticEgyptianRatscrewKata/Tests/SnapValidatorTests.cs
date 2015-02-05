@@ -10,7 +10,7 @@ namespace CelticEgyptianRatscrewKata.Tests
         [TestCaseSource("SandwichSnaps")]
         [TestCaseSource("DarkQueenSnaps")]
         [TestCaseSource("StacksWithoutSnaps")]
-        public bool SnapValidator(Stack cards)
+        public bool SnapValidator(Cards cards)
         {
             return new SnapValidator().CanSnap(cards);
         }
@@ -121,7 +121,7 @@ namespace CelticEgyptianRatscrewKata.Tests
 
         private static TestCaseData TestStack(IEnumerable<Card> cards, string testName)
         {
-            var stack = new Stack(cards);
+            var stack = new Cards(cards);
             return new TestCaseData(stack).SetName(stack + testName);
         }
     }
