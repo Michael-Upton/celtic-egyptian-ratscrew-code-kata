@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D313EABF-7C55-4216-AA7D-47BA7C7D0A13}</ProjectGuid>
+    <ProjectGuid>{FCD406EE-3D0C-432C-A217-62CF498ED2FC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CelticEgyptianRatscrewKata</RootNamespace>
-    <AssemblyName>CelticEgyptianRatscrewKata</AssemblyName>
+    <RootNamespace>CelticEgyptianRatscrewAcceptanceTests</RootNamespace>
+    <AssemblyName>CelticEgyptianRatscrewAcceptanceTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,12 +23,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">
@@ -42,32 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Card.cs" />
-    <Compile Include="CardExtensions.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="GameBuilder.cs" />
-    <Compile Include="IShuffler.cs" />
-    <Compile Include="Maybe.cs" />
-    <Compile Include="Cards.cs" />
-    <Compile Include="Dealer.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Players.cs" />
+    <Compile Include="AcceptanceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rank.cs" />
-    <Compile Include="SnapRules\DarkQueenSnapper.cs" />
-    <Compile Include="SnapRules\NSandwichSnapper.cs" />
-    <Compile Include="SnapRules\SnapValidator.cs" />
-    <Compile Include="Shuffler.cs" />
-    <Compile Include="Tests\CardsTests.cs" />
-    <Compile Include="Tests\DealerTests.cs" />
-    <Compile Include="Tests\ShufflerTests.cs" />
-    <Compile Include="Tests\SnapValidatorTests.cs" />
-    <Compile Include="Suit.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CelticEgyptianRatscrewKata\CelticEgyptianRatscrewKata.csproj">
+      <Project>{d313eabf-7c55-4216-aa7d-47ba7c7d0a13}</Project>
+      <Name>CelticEgyptianRatscrewKata</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

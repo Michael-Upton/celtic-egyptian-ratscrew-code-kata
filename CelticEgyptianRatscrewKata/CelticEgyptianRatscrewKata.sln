@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelticEgyptianRatscrewKata", "CelticEgyptianRatscrewKata\CelticEgyptianRatscrewKata.csproj", "{D313EABF-7C55-4216-AA7D-47BA7C7D0A13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CelticEgyptianRatscrewAcceptanceTests", "CelticEgyptianRatscrewAcceptanceTests\CelticEgyptianRatscrewAcceptanceTests.csproj", "{FCD406EE-3D0C-432C-A217-62CF498ED2FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D313EABF-7C55-4216-AA7D-47BA7C7D0A13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D313EABF-7C55-4216-AA7D-47BA7C7D0A13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D313EABF-7C55-4216-AA7D-47BA7C7D0A13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCD406EE-3D0C-432C-A217-62CF498ED2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCD406EE-3D0C-432C-A217-62CF498ED2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCD406EE-3D0C-432C-A217-62CF498ED2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCD406EE-3D0C-432C-A217-62CF498ED2FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

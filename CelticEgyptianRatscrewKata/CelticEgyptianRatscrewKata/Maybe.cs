@@ -53,5 +53,10 @@ namespace CelticEgyptianRatscrewKata
             return !left.Equals(right);
         }
         #endregion
+
+        public override string ToString()
+        {
+            return _hasValue ? _value.ToString() : "<Nothing>";
+        }
     }
 }
