@@ -60,6 +60,7 @@
     <Compile Include="Shuffler.cs" />
     <Compile Include="Tests\CardsTests.cs" />
     <Compile Include="Tests\DealerTests.cs" />
+    <Compile Include="Tests\GameBuilderTests.cs" />
     <Compile Include="Tests\ShufflerTests.cs" />
     <Compile Include="Tests\SnapValidatorTests.cs" />
     <Compile Include="Suit.cs" />
